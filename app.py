@@ -1,5 +1,5 @@
 
-       import streamlit as st
+ import streamlit as st
 from google import genai
 
 st.title("🚀 AI მარკეტინგული ასისტენტი")
