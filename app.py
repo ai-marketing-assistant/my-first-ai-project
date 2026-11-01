@@ -1,24 +1,29 @@
-import streamlit as st
+
+       import streamlit as st
 from google import genai
 
-st.title("🚀 AI მარკეტინგის ასისტენტი ქართული ბიზნესისთვის")
-st.write("შეიყვანე დეტალები და მიიღე მზა პოსტები სოციალური ქსელებისთვის ერთ წამში!")
+st.title("🚀 AI მარკეტინგული ასისტენტი")
+st.write("შეიყვანე დეტალები და მიიღე საუკეთესო სარეკლამო ტექსტი!")
 
-API_KEY = "AQ.Ab8RN6IblRDn6Ezph0yYmLxT6tSBBHnv-Obgvr5WdEG7APLHFw"
+API_KEY = "AQ.Ab8RN6iB1RDn6Ezph..."  # შენი გასაღები
 
-business_type = st.selectbox("აირჩიე ბიზნესის ტიპი:", ["კაფე / რესტორანი", "სილამაზის სალონი", "ონლაინ მაღაზია / ტანსაცმელი", "სხვა"])
-product_info = st.text_area("დაწერე ორი სიტყვით რა პროდუქტი ან აქცია გაქვს:")
+client = genai.Client(api_key=API_KEY)
+
+business_type = st.selectbox("ბიზნესის ტიპი:", ["კაფე / რესტორანი", "ონლაინ მაღაზია", "სილამაზის სალონი", "სხვადასხვა სერვისი"])
+product_info = st.text_area("დაწერე ორი სიტყვით რა პროდუქტი ან სერვისი გაქვს:")
 
 if st.button("გენერაცია ✨"):
     if product_info:
-        client = genai.Client(api_key=API_KEY)
-        prompt = f"შენ ხარ პროფესიონალი სოციალური მედიის მარკეტოლოგი. დაწერე მიმზიდველი ინსტაგრამის პოსტი ქართულად, მეგობრული ტონით და ჰეშთეგებით, შემდეგი ბიზნესისთვის: {business_type}. დეტალები: {product_info}"
+        prompt = f"შექმენი სარეკლამო სოციალური ქსელის პოსტი შემდეგი ბიზნესისთვის: {business_type}. პროდუქტის/სერვისის აღწერა: {product_info}"
         
-        response = client.models.generate_content(
-            model="gemini-1.5-flash",
-            contents=prompt,
-        )
-        st.subheader("შენი მზა ტექსტი:")
-        st.write(response.text)
+        try:
+            response = client.models.generate_content(
+                model="gemini-1.5-flash",
+                contents=prompt,
+            )
+            st.subheader("შენი ახალი ტექსტი:")
+            st.write(response.text)
+        except Exception as e:
+            st.error(f"მოხდა შეცდომა: {e}")
     else:
-        st.warning("გთხოვთ, ჯერ შეიტანოთ ინფორმაცია პროდუქტზე!")
+        st.warning("გთხოვთ, ჯერ შეიყვანოთ ინფორმაცია პროდუქტის შესახებ!")
