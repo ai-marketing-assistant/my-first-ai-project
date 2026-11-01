@@ -15,7 +15,7 @@ if st.button("გენერაცია ✨"):
         prompt = f"შენ ხარ პროფესიონალი სოციალური მედიის მარკეტოლოგი. დაწერე მიმზიდველი ინსტაგრამის პოსტი ქართულად, მეგობრული ტონით და ჰეშთეგებით, შემდეგი ბიზნესისთვის: {business_type}. დეტალები: {product_info}"
         
         response = client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-1.5-flash",
             contents=prompt,
         )
         st.subheader("შენი მზა ტექსტი:")
