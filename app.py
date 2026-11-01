@@ -4,9 +4,7 @@ from google import genai
 st.title("🚀 AI მარკეტინგული ასისტენტი")
 st.write("შეიყვანე დეტალები და მიიღე საუკეთესო სარეკლამო ტექსტი!")
 
-API_KEY = "AQ.Ab8RN6IblRDn6Ezph0yYmLxT6tSBBHnv-Obgvr5WdEG7APLHFw"
-
-client = genai.Client(api_key=API_KEY)
+client = genai.Client()
 
 business_type = st.selectbox("ბიზნესის ტიპი:", ["კაფე / რესტორანი", "ონლაინ მაღაზია", "სილამაზის სალონი", "სხვადასხვა სერვისი"])
 product_info = st.text_area("დაწერე ორი სიტყვით რა პროდუქტი ან სერვისი გაქვს:")
@@ -17,7 +15,7 @@ if st.button("გენერაცია ✨"):
         
         try:
             response = client.models.generate_content(
-                model="gemini-1.5-flash",
+                model="gemini-2.5-flash",
                 contents=prompt,
             )
             st.subheader("შენი ახალი ტექსტი:")
