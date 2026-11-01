@@ -1,11 +1,10 @@
-
- import streamlit as st
+import streamlit as st
 from google import genai
 
 st.title("🚀 AI მარკეტინგული ასისტენტი")
 st.write("შეიყვანე დეტალები და მიიღე საუკეთესო სარეკლამო ტექსტი!")
 
-API_KEY = "AQ.Ab8RN6iB1RDn6Ezph..."  # შენი გასაღები
+API_KEY = "AQ.Ab8RN6iB1RDn6Ezph..."
 
 client = genai.Client(api_key=API_KEY)
 
