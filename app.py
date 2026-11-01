@@ -4,7 +4,7 @@ from google import genai
 st.title("🚀 AI მარკეტინგული ასისტენტი")
 st.write("შეიყვანე დეტალები და მიიღე საუკეთესო სარეკლამო ტექსტი!")
 
-API_KEY = "AQ.Ab8RN6iB1RDn6Ezph..."
+API_KEY = "AQ.Ab8RN6IblRDn6Ezph0yYmLxT6tSBBHnv-Obgvr5WdEG7APLHFw"
 
 client = genai.Client(api_key=API_KEY)
 
